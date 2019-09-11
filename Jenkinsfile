@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage('Git Pull') {
 		    steps{
-		        git changelog: false, credentialsId: 'Sumeet', url: 'https://github.com/sumeetisp/docker-react.git'
+		        sh label: '', script: '''docker build -t sumeetisp/docker-react .'''
 		    }
 		}
 	}
