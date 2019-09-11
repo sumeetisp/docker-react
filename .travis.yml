@@ -3,5 +3,20 @@ services:
   - docker
 before_install:
   - docker build -t sumeetisp/docker-react -f Dockerfile.dev .
-script:
-  - docker run sumeetisp/docker-react npm run test -- --coverage
+#script:
+#  - docker run sumeetisp/docker-react npm run test -- --coverage
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-427523205574"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$SECRET_ID"
+  
+
