@@ -1,0 +1,7 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t sumeetisp/docker-react -f Dockerfile.dev .
+script:
+  - docker run sumeetisp/docker-react npm run test -- --coverage
